@@ -4,7 +4,7 @@ This repo implements the code for [Measurement Simplification in ρ-POMDP with P
 ## Installation
 Clone the repository:
 ```bash
-git clone https://github.com/<username>/<repository>.git
+git clone https://github.com/tomyot/measurement-simplification.git
 ```
 Install required packages:
 ```bash
