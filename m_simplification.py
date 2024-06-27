@@ -17,7 +17,7 @@ from gaussian_belief import GaussianBelief
 
 
 
-class MeasurementSimplification(object):
+class MeasurementSimplification:
     """
     Class representing a belief space planning system.
 
@@ -619,7 +619,7 @@ class MeasurementSimplification(object):
         delta1 = np.eye(B_old.shape[0])+B_old@marg_cov_mat@B_old.T
         
         # calculating determinant
-        det1 = np.linalg.det(prior)*np.linalg.det(delta1)*np.linalg.det(B_new.T@np.linalg.inv(delta1)@B_new + D_new.T@D_new)
+        det1 = logdet_prior*np.linalg.det(delta1)*np.linalg.det(B_new.T@np.linalg.inv(delta1)@B_new + D_new.T@D_new)
         
         if lemma == 2:
             return det1, total_time
@@ -754,8 +754,8 @@ class MeasurementSimplification(object):
 
 
     def get_observation_to_closest_landmark(self, belief, future=False):
-        # get curr mean and find closest landmark
-        # if future is true, observation are taken in relation to the prior (planning)
+        # get current mean and find closest landmark
+        # if future==True, observations are taken in relation to the prior mapping (planning)
         curr_mean = belief.get_curr_mean()
         noise = np.random.multivariate_normal([0,0],OBSERVATION_MODEL_NOISE.covariance(),1) #measurement noise    
         min_dist = 3

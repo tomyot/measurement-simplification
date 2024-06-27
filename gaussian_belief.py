@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-
-#Std library imports
-
-#third party imports
 from gtsam import gtsam
 import matplotlib.pyplot as plt
 import gtsam.utils.plot as gtsam_plot
@@ -10,8 +5,19 @@ import numpy as np
 import time
 
 
-class GaussianBelief(object):
+class GaussianBelief:
+    """
+    Class implementing a Guassian belief using a gtsam factor graph representation.
 
+    Parameters:
+    - motion_model_noise (gtsam.noiseModel): The noise model for the motion model.
+    - observation_model_noise (gtsam.noiseModel): The noise model for the observation model.
+    Attributes:
+    - f_graph (gtsam.NonlinearFactorGraph): The factor graph representing the belief.
+    - initials (gtsam.Values): The prior values for the belief states.
+    - fg_pose_idx (int): The index of the current pose in the factor graph.
+    """
+        
     def __init__(self, motion_model_noise, observation_model_noise):
         
         self.f_graph = gtsam.NonlinearFactorGraph()
@@ -85,11 +91,6 @@ class GaussianBelief(object):
     def get_hessian(self):
         lfg = self.f_graph.linearize(self.initials)
         return lfg.hessian()  
-
-    # def entropy(self):
-    #     jacobian = self.get_jacobians()[0]
-    #     h = 0.5*(-jacobian.shape[1]*np.log(2*np.pi*np.e)+(np.linalg.slogdet(jacobian@jacobian.transpose())[1]))
-    #     return h  
 
     def get_prior_info_mat(self):
         jacobian = self.get_jacobians()[0]

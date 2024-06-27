@@ -1,5 +1,5 @@
 # Measurement Simplification
-This repo implements the code for [Measurement Simplification in ρ-POMDP with Performance Guarantees](https://arxiv.org/abs/2309.10701)
+This repo implements the code for [Measurement Simplification in ρ-POMDP with Performance Guarantees](https://arxiv.org/abs/2309.10701), now accepted to IEEE T-RO
 
 ## Installation
 Clone the repository:

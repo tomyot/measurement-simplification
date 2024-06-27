@@ -4,10 +4,10 @@ import gtsam
 # Default parameters
 SCENARIO = 'uniform' 
 PRIOR_MAPPING = 'line' # 'line' or 'boxes'
-NUM_LANDMARKS = 5000
+NUM_LANDMARKS = 10000
 MAP_SIZE = 40
 GOAL = (32, 0)
-NUM_PATHS = 20
+NUM_PATHS = 50
 NUM_FIGURES = 1
 ITERATIONS = 3
 # Prior information
